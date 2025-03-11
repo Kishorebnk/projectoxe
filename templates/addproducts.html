@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PharmaCo Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background-color: #111;
+        color: white;
+        padding-top: 70px;
+    }
+
+    /* Navbar */
+    nav {
+        display: flex;
+        justify-content: space-between;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        padding: 8px 30px;
+        background: linear-gradient(to right, #f9a825, #001f3d);
+    }
+
+    .left-section {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .navbar-logo {
+        height: 40px;
+        width: auto;
+    }
+
+    .logo {
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    ul {
+        display: flex;
+        list-style: none;
+        gap: 20px;
+    }
+
+    ul li a {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    nav ul li {
+        margin-right: 30px;
+        margin-top: 13px;
+    }
+
+    nav ul li a:hover {
+        color: #f9a825;
+    }
+
+    /* Layout */
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 30px;
+    }
+
+    /* Add Product Form */
+    .form-container {
+        background: #222;
+        padding: 25px;
+        border-radius: 10px;
+        flex: 1;
+        text-align: center;
+        box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+        max-width: 48%;
+    }
+
+    .onee {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    .form-container input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: 1px solid #666;
+        background: #333;
+        color: white;
+        text-align: center;
+    }
+
+    .form-container button {
+        width: 100%;
+        padding: 10px;
+        background: #0056b3;
+        color: white;
+        border: none;
+        cursor: pointer;
+        margin-top: 10px;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+    .form-container button:hover {
+        background: #004080;
+    }
+
+    /* Table */
+    .table-container {
+        flex: 1;
+        max-width: 48%;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+
+    th, td {
+        padding: 12px;
+        border: 1px solid #555;
+        text-align: center;
+    }
+
+    th {
+        background: #003366;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background: #1a1a1a;
+    }
+
+    .edit-input {
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #666;
+        background: #333;
+        color: white;
+        text-align: center;
+        border-radius: 4px;
+    }
+
+    .edit-btn, .delete-btn {
+        padding: 5px 8px;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+        font-size: 12px;
+    }
+
+    .edit-btn {
+        background: #ff9800;
+        color: white;
+    }
+
+    .delete-btn {
+        background: red;
+        color: white;
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .form-container,
+        .table-container {
+            max-width: 100%;
+        }
+    }
+</style>
+
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="left-section">
+            <img src="/static/oxelogo.png" alt="OXE CURE PHARMACEUTICALS Logo" class="navbar-logo">
+            <span class="logo">OXE CURE PHARMACEUTICALS</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="{{url_for('home')}}"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="{{url_for('home')}}"><i class="fas fa-box"></i> Our Products</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Add Product Form -->
+        <div class="form-container">
+            <h2 class="onee">Add Product</h2>
+            <form action="{{ url_for('add_product') }}" method="POST">
+                <input type="text" name="generic_name" placeholder="Generic Name" required>
+                <input type="text" name="doses_form" placeholder="Dosage Form" required>
+                <input type="text" name="strength" placeholder="Strength" required>
+                <button type="submit">Add Product</button>
+            </form>
+        </div>
+
+        <!-- Available Products Table -->
+        <div class="table-container">
+            <h2 class="onee">Available Products</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sr. No</th>
+                        <th>Generic Name</th>
+                        <th>Dosage Form</th>
+                        <th>Strength</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in products %}
+                    <tr data-id="{{product[0]}}">
+                        <td>{{ loop.index }}</td>
+                        <td class="product-data">{{ product[1] }}</td>
+                        <td class="product-data">{{ product[2] }}</td>
+                        <td class="product-data">{{ product[3] }}</td>
+                        <td>
+                            <button class="edit-btn" onclick="enableEdit(this)">Edit</button>
+                            <button class="delete-btn" onclick="deleteProduct(this)">Delete</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function enableEdit(button, productId) {
+            let row = button.closest("tr");
+            let cells = row.querySelectorAll(".product-data");
+    
+            if (button.innerText === "Edit") {
+                // Convert text to input fields
+                cells.forEach(cell => {
+                    let currentValue = cell.innerText;
+                    cell.innerHTML = `<input type="text" value="${currentValue}" class="edit-field">`;
+                });
+    
+                // Change button text to "Save"
+                button.innerText = "Save";
+                button.onclick = function () { saveEdit(button); };
+            }
+        }
+    
+        function saveEdit(button) {
+            let row = button.closest("tr");
+            let productId=row.getAttribute("data-id");
+            let inputs = row.querySelectorAll(".edit-field");
+    
+            let updatedData = {
+                generic_name: inputs[0].value,
+                doses_form: inputs[1].value,
+                strength: inputs[2].value
+            };
+    
+            fetch(`/edit_product/${productId}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(updatedData)
+            }).then(response => response.json()).then(data => {
+                if (data.success) {
+                    // Update table with new values
+                    inputs.forEach((input, index) => {
+                        input.parentElement.innerHTML = input.value;
+                    });
+    
+                    // Change button text back to "Edit"
+                    button.innerText = "Edit";
+                    button.onclick = function () { enableEdit(button); };
+                } else {
+                    alert("Error updating product!");
+                }
+            }).catch(error=> console.log("Error:",error));
+            
+        }
+    
+        function deleteProduct(button) {
+            let row = button.closest("tr");
+            let productId = row.getAttribute("data-id");
+            if (confirm("Are you sure you want to delete this product?")) {
+                fetch(`/delete_product/${productId}`, {
+                    method: "POST"
+                }).then(response => response.json()).then(data => {
+                    if (data.success) {
+                        row.remove();  // Refresh page after deletion
+                    } else {
+                        alert("Error deleting product!");
+                    }
+                }).catch(error=>console.log("Error:",error));
+            }
+        }
+    </script>
+</body>
+</html>

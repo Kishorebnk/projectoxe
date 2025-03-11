@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <style>
+        /* Body background color */
+        body {
+            background: linear-gradient(45deg, #003366, #f9a825);
+            /* Navy blue and mustard yellow mix */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Login container style */
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            /* Light background with opacity */
+            padding: 65px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            height: 240px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        /* Admin header style */
+        .admin-header {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 25px;
+            font-weight: bold;
+            color: #003366;
+            /* Navy blue color */
+            margin-bottom: 20px;
+        }
+
+        /* Input fields and button styles */
+        .login-container input {
+            width: 75%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .login-container button {
+            width: 75%;
+            padding: 10px;
+            background-color: #003366;
+            /* Navy blue */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .login-container button:hover {
+            background-color: #f9a825;
+            /* Darker shade of navy blue */
+        }
+
+        /* Error message style */
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .add-product-form {
+            display: none;
+        }
+
+        .ad {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: #003366;
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Main Container for Dynamic Content -->
+    <div id="main-content" class="login-container">
+        <!-- Default content (Login Form) -->
+        <div class="admin-header">OXE CURE PHARMACEUTICALS</div>
+        <h4 class="ad">Admin Login</h4>
+        <form method="POST" action="/admin_login">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <div class="error-message" id="error-message"></div>
+    </div>
+
+    <!-- Add Product Form (Initially Hidden) -->
+    <div id="add-product" class="add-product-form">
+        <h2>Add a New Product</h2>
+        <form id="addProductForm">
+            <input type="text" id="productName" placeholder="Product Name" required>
+            <input type="text" id="productStrength" placeholder="Strength" required>
+            <input type="text" id="productDosage" placeholder="Dosage Form" required>
+            <button type="submit">Add Product</button>
+        </form>
+        <div class="error-message" id="addProductError"></div>
+    </div>
+</body>
+
+</html>

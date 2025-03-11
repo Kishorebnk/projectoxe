@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OXE CURE PHARMACEUTICALS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth; /* Added smooth scroll */
+}
+
+/* Navbar Styling */
+nav {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding-left: 30px;
+    /* Shift navbar buttons right */
+}
+
+
+.left-section {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adds spacing between logo and text */
+    
+}
+
+.navbar-logo {
+    height: 40px;
+    width: auto;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-right: 30px;
+    /* Increased margin to move navbar items to the right */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+}
+
+nav ul li a:hover {
+    color: #f9a825;
+}
+
+nav ul li a i {
+    margin-right: 8px;
+}
+
+/* Navbar color with Mustard and Navy */
+nav {
+    background: linear-gradient(to right, #f9a825, #001f3d);
+    /* Mustard Yellow left, Navy Blue right */
+}
+
+/* Main Container */
+.container1 {
+    max-width: 1200px;
+    margin: auto;
+    padding-top: 120px;
+    /* Added more space to account for the fixed navbar */
+}
+.container2{
+    max-width: 1200px;
+    margin: auto;
+    padding-top: 1px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding-top: 40px;
+    /* Added more space to account for the fixed navbar */
+}
+
+/* Home Section */
+#home {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+}
+
+#home h1 {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+#home h3 {
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+#home p {
+    font-size: 18px;
+}
+
+#home img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 30px;
+    /* Added margin for space between image and navbar */
+}
+
+/* About Us Section */
+#about {
+    display: flex;
+    justify-content: center;
+    padding: 80px 0;
+    background-color: #001f3d no-repeat center center;
+    /* Add your background image URL */
+    background-size: 100%;
+    color: white;
+    text-align: left;
+    position: relative;
+}
+
+.about-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 40px;
+    background: #001f3d;
+    /* Dark overlay for better text readability */
+    border-radius: 10px;
+    animation: fadeIn 2s ease-out;
+    border-top: 1px;
+    border-bottom: 1px;
+}
+
+.about-left {
+    width: 60%;
+}
+
+.about-left h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.about-left p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.about-right {
+    width: 35%;
+    text-align: center;
+    padding-top: 60px;
+}
+
+.about-right img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Animation for Heading */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Products Section */
+#products {
+    margin-bottom: 50px;
+    /* Added margin to separate it from Contact Us */
+}
+
+#products h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    padding-top: -1px;
+}
+
+#products p {
+    font-size: 18px;
+}
+
+.product-btn {
+    display: inline-block;
+    background-color: #f9a825;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 1px;
+
+}
+
+.product-btn:hover {
+    background-color: #f9a825;
+}
+
+/* Center the View More Products button */
+.product-btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 100px;
+}
+
+/* Image Boxes for Products */
+.product-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+}
+
+.product-box {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.product-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-box:hover img {
+    transform: scale(1.1);
+}
+
+.product-box:hover {
+    transform: scale(1.05);
+}
+
+/* Contact Us Section */
+#contact {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    background-color: #001f3d;
+    /* Navy blue background */
+    color: white;
+    padding: 40px;
+    padding-left: 120px;
+    /* Increased padding for wider container */
+    padding-right: 120px;
+    /* Increased padding for wider container */
+}
+
+.contact-details {
+    font-size: 18px;
+}
+
+.contact-details a {
+    color: #f9a825;
+    text-decoration: none;
+}
+
+.contact-details a:hover {
+    text-decoration: underline;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #f9a825;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+/* WhatsApp Icon */
+.whatsapp-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .whatsapp-icon p {
+    font-size: 12px;
+    margin-top: 5px;
+  }
+
+  .whatsapp-icon:hover {
+    background-color: #128c7e;
+  } 
+</style>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="left-section">
+            <img src="/static/oxelogo.png" alt="OXE CURE PHARMACEUTICALS Logo" class="navbar-logo"> 
+            <span class="logo">OXE CURE PHARMACEUTICALS</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home"><i class="fas fa-home"></i>Home</a></li>
+            <li><a href="#about"><i class="fas fa-info-circle"></i>About Us</a></li>
+            <li><a href="#products"><i class="fas fa-box"></i>Our Products</a></li>
+            <li><a href="#contact"><i class="fas fa-phone-alt"></i>Contact Us</a></li>
+        </ul>
+    </nav>
+    <!-- Home Section -->
+    <div id="home" class="container1">
+        <div>
+            <h1>Welcome To Oxe Cure Pharmaceuticals</h1>
+            <h3>A Trusted Pharmaceuticals</h3>
+            <p>Oxe Cure Pharmaceuticals is the best company that manufactures highly effective medicines.</p>
+            <p>Established in 2012, and it is ISO certified.</p>
+        </div>
+        <div>
+            <img src="/static/pharmacy-background-bomnaifdze6cde60.jpg" alt="Pharmacy Image">
+        </div>
+    </div>
+
+    <!-- About Us Section -->
+    <div id="about" class="container">
+        <div class="about-content" style="padding-left: 120px; padding-right: 120px;">
+            <!-- Increased padding for wider container -->
+            <div class="about-left">
+                <h1>About Us</h1>
+                <p>Oxe Cure Pharmaceuticals is a leading name in the field of healthcare. We specialize in manufacturing
+                    medicines that have a lasting impact on the health of individuals. Our products are developed under
+                    stringent
+                    quality control measures, ensuring top-notch efficacy. Established in 2012, we have consistently
+                    been at the
+                    forefront of medical research and pharmaceutical development. With a team of experts in chemistry
+                    and
+                    medicine, we strive to meet global healthcare demands. As an ISO-certified company, we maintain the
+                    highest
+                    standards of production. We continue to expand our reach to new regions, offering affordable
+                    solutions to
+                    healthcare problems worldwide. Our commitment to innovation drives us to continuously improve and
+                    develop new
+                    treatments that can help save lives. We believe that our mission is not just to make medicines but
+                    to improve
+                    the quality of life for everyone who uses them.</p>
+            </div>
+            <div class="about-right">
+                <img src="/static/pharmacy-background-bomnaifdze6cde60.jpg" alt="About Us Image">
+                <img src="/static/pharmacy-background-bomnaifdze6cde60.jpg" alt="About Us Image">
+            </div>
+        </div>
+    </div>
+    <!-- <div class="scrolling-text">
+    <span>TO ORDER CLICK ON WHAT'S APP ICON</span>
+  </div> -->
+
+    <!-- Products Section -->
+    <div id="products" class="container">
+        <h2>Our Products</h2>
+        <p>Explore a wide range of products in Oxe Cure Pharmaceuticals.</p>
+        <div class="product-gallery">
+            <div class="product-box"><img src="/static/creams.jpeg" alt="Product 1"></div>
+            <div class="product-box"><img src="/static/tablets.png" alt="Product 2"></div>
+            <div class="product-box"><img src="/static/injection.avif" alt="Product 3"></div>
+            <div class="product-box"><img src="/static/med.jpg" alt="Product 4"></div>
+            <div class="product-box"><img src="/static/syrup.jpg" alt="Product 5"></div>
+        </div>
+        <div class="product-btn-container">
+            <a href="{{url_for('products')}}" class="product-btn">View More Products</a>
+        </div>
+    </div>
+
+    <!-- Contact Us Section -->
+    <div id="contact" class="container">
+        <div>
+            <h1 class="con">Contact us</h1>
+            <h3>For Any queries:-</h3>
+            <p class="contact-details"><i class="fas fa-phone-alt"></i>9014774569</p>
+            <p class="contact-details"><i class="fas fa-phone-alt"></i>090 635 53565</p>
+            <h3>Visit us at:</h3>
+            <p class="contact-details"><i class="fas fa-map-marker-alt"></i> OXE CURE PHARMACEUTICALS, Hyderabad</p>
+            <p class="contact-details"><a href="mailto:contact@oxecure.com">contact@oxecure.com</a></p>
+        </div>
+        <div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18..."></iframe>
+        </div>
+    </div>
+
+    <!-- WhatsApp Icon -->
+    <div class="whatsapp-icon"
+        onclick="window.location.href='https://wa.me/9014774369?text=I%20am%20Interested%20to%20Buy'">
+        <i class="fab fa-whatsapp"></i>
+        <p onclick="window.location.href='https://wa.me/9014774369?text=I%20am%20Interested%20to%20Buy'">Click Here to
+            Order
+        </p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>OXE CURE PHARMACEUTICALS &copy; 2025 | All Rights Reserved</p>
+    </footer>
+
+</body>
+</html> 

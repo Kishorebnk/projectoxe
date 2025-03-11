@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Medicine Ordering</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            scroll-behavior: smooth;
+        }
+
+        /* Navbar Styling */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            padding-left: 30px;
+        }
+
+        .left-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .navbar-logo {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-right: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            padding: 15px;
+        }
+
+        nav ul li a:hover {
+            color: #f9a825;
+        }
+
+        nav ul li a i {
+            margin-right: 8px;
+        }
+
+        nav {
+            background: linear-gradient(to right, #f9a825, #001f3d);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            margin-top: 80px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #001f3d;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #001f3d;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .whatsapp-icon {
+            cursor: pointer;
+            font-size: 24px;
+            color: #25d366;
+            align-items: center;
+        }
+
+        .whatsapp-icon:hover {
+            color: #128c7e;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="left-section">
+            <img src="/static/oxelogo.png" alt="OXE CURE PHARMACEUTICALS Logo" class="navbar-logo">
+            <span class="logo">OXE CURE PHARMACEUTICALS</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="{{url_for('home')}}"><i class="fas fa-home"></i>Home</a></li>
+            <li><a href="{{url_for('home')}}"><i class="fas fa-info-circle"></i>About Us</a></li>
+            <li><a href="{{url_for('home')}}"><i class="fas fa-box"></i>Our Products</a></li>
+            <li><a href="{{url_for('home')}}"><i class="fas fa-phone-alt"></i>Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h2>Our Products</h2>
+
+        <!-- Product Table -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Sr. No.</th>
+                    <th>Generic Name</th>
+                    <th>Dosage Form</th>
+                    <th>Strength</th>
+                    <th>To Order</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ product.generic_name }}</td>
+                    <td>{{ product.doses_form }}</td>
+                    <td>{{ product.strength }}</td>
+                    <td>
+                        <a href="https://wa.me/9959364812?text=I want to buy {{ product.generic_name }} tablet." target="_blank" class="whatsapp-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>
