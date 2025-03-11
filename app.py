@@ -2,21 +2,9 @@ from flask import Flask, render_template, request, redirect, url_for, session, j
 # from flask_mysqldb import MySQL
 import os
 import mysql.connector
-
 app = Flask(__name__)
-app.secret_key = "ba6354d1687d0d64876ee550b71bc947"
-
-# MySQL Configuration
-# app.config['MYSQL_HOST'] = 'localhost'
-# app.config['MYSQL_USER'] = 'root'
-# app.config['MYSQL_PASSWORD'] = 'nanda@12'  
-# app.config['MYSQL_DB'] = 'oxecure'
-# app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
-
-# mysql = MySQL(app)
-
 mydb = mysql.connector.connect(host="localhost",port=3306,  user="root", password="nanda@12",db='oxecure')
-
+app.secret_key = "ba6354d1687d0d64876ee550b71bc947"
 # Default Admin Credentials
 ADMIN_USERNAME = "admin"
 ADMIN_PASSWORD = "password@123"
